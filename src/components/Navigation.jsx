@@ -1,7 +1,15 @@
 import React from "react";
 import { useTrail, useSpring, animated } from "@react-spring/web";
+import { NavLink } from "react-router-dom";
 
-const links = ["Home", "About", "Products", "Contact"];
+// const links = ["Home", "About", "Products", "Contact"];
+
+    const links = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Products", path: "/products" },
+    { name: "Contact", path: "/contact" },
+    ];
 
 export default function Navigation() {
   // Animate nav links in sequence
@@ -37,37 +45,39 @@ export default function Navigation() {
       {/* Nav Links */}
       <div style={{ display: "flex", gap: "24px" }}>
         {trail.map((style, i) => (
-          <animated.a
-            key={links[i]}
-            href={"#" + links[i].toLowerCase()}
-            style={{
-              ...style, // ✅ apply full style object directly
-              color: "white",
-              textDecoration: "none",
-              fontSize: "16px",
-              fontWeight: "500",
-            }}
-          >
-            {links[i]}
-          </animated.a>
+          <animated.div key={i} style={style}>
+            <NavLink
+              to={links[i].path}
+              style={({ isActive }) => ({
+                color: isActive ? "#ffd700" : "white",
+                textDecoration: "none",
+                fontSize: "16px",
+                fontWeight: "500",
+              })}
+            >
+              {links[i].name}
+            </NavLink>
+          </animated.div>
         ))}
       </div>
 
       {/* Sign In Button */}
-      <animated.button
-        style={{
-          ...buttonSpring,
-          background: "white",
-          color: "#0d6efd",
-          border: "none",
-          borderRadius: "8px",
-          padding: "8px 16px",
-          fontWeight: "600",
-          cursor: "pointer",
-        }}
-      >
-        Sign In
-      </animated.button>
+       <animated.div style={buttonSpring}>
+        <NavLink
+          to="/signin"
+          style={{
+            background: "white",
+            color: "#0d6efd",
+            border: "none",
+            borderRadius: "8px",
+            padding: "8px 16px",
+            fontWeight: "600",
+            textDecoration: "none",
+          }}
+        >
+          Sign In
+        </NavLink>
+      </animated.div>
     </nav>
   );
 }

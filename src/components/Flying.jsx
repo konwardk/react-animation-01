@@ -14,6 +14,8 @@ export default function FlyingImages() {
   
   ];
 
+  // const boxImage =  ;
+
   const [start, setStart] = useState(false);
 
   useEffect(() => {
