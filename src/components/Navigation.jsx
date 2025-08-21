@@ -39,7 +39,7 @@ export default function Navigation() {
     >
       {/* Logo */}
       <div style={{ color: "white", fontWeight: "bold", fontSize: "20px" }}>
-        MyLogo
+        React Animations
       </div>
 
       {/* Nav Links */}
