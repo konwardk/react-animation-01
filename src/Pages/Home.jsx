@@ -1,4 +1,4 @@
-import Flying from './Flying'
+import Flying from '../components/Flying'
 function Home() {
   return (
     <>
